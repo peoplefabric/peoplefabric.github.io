@@ -1,0 +1,582 @@
+/* ==========================================================================
+   Moments Marketing Site - Modern Minimal Design
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=La+Belle+Aurore&family=Inter:wght@400;500;600;700&display=swap');
+
+/* --------------------------------------------------------------------------
+   Design Tokens
+   -------------------------------------------------------------------------- */
+:root {
+  /* Colors */
+  --color-primary: #FF385C;
+  --color-primary-hover: #E31C5F;
+  --color-primary-light: rgba(255, 56, 92, 0.08);
+
+  --color-bg: #FFFFFF;
+  --color-bg-subtle: #F9FAFB;
+  --color-bg-muted: #F3F4F6;
+
+  --color-text: #111827;
+  --color-text-secondary: #4B5563;
+  --color-text-muted: #9CA3AF;
+
+  --color-border: #E5E7EB;
+
+  /* Typography */
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-brand: 'La Belle Aurore', cursive;
+
+  /* Spacing */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+  /* Border Radius */
+  --radius-sm: 6px;
+  --radius-md: 10px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+
+  /* Shadows */
+  --shadow-sm: 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.06);
+  --shadow-lg: 0 12px 32px rgba(0, 0, 0, 0.08);
+  --shadow-glow: 0 0 40px rgba(255, 56, 92, 0.15);
+
+  /* Transitions */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-fast: 150ms;
+  --duration-base: 300ms;
+  --duration-slow: 500ms;
+
+  /* Layout */
+  --max-width: 1120px;
+  --max-width-narrow: 720px;
+}
+
+/* --------------------------------------------------------------------------
+   Reset
+   -------------------------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  line-height: 1.6;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* --------------------------------------------------------------------------
+   Layout
+   -------------------------------------------------------------------------- */
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 var(--space-6);
+}
+
+/* --------------------------------------------------------------------------
+   Scroll-Triggered Header (appears after scrolling)
+   -------------------------------------------------------------------------- */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  padding: var(--space-4) 0;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-bottom: 1px solid transparent;
+  transform: translateY(-100%);
+  opacity: 0;
+  transition: transform var(--duration-base) var(--ease-out),
+              opacity var(--duration-base) var(--ease-out),
+              border-color var(--duration-base);
+}
+
+.header.visible {
+  transform: translateY(0);
+  opacity: 1;
+  border-bottom-color: var(--color-border);
+}
+
+.header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.header__logo-icon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+}
+
+.header__logo-text {
+  font-family: var(--font-brand);
+  font-size: 24px;
+  color: var(--color-primary);
+}
+
+/* --------------------------------------------------------------------------
+   Hero Section
+   -------------------------------------------------------------------------- */
+.hero {
+  padding: var(--space-16) 0 var(--space-12);
+  display: flex;
+  flex-direction: column;
+}
+
+.hero__main {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.hero__brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-8);
+}
+
+.hero__logo {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+}
+
+.hero__logo-text {
+  font-family: var(--font-brand);
+  font-size: clamp(56px, 10vw, 80px);
+  color: var(--color-primary);
+  line-height: 1;
+}
+
+.hero__tagline {
+  font-size: clamp(28px, 5vw, 44px);
+  font-weight: 700;
+  line-height: 1.15;
+  color: var(--color-text);
+  margin-bottom: var(--space-6);
+  max-width: 600px;
+}
+
+.hero__actions {
+  display: flex;
+  gap: var(--space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--space-12);
+}
+
+/* App Store Buttons */
+.app-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-3) var(--space-5);
+  background: var(--color-text);
+  color: var(--color-bg);
+  border-radius: var(--radius-md);
+  transition: transform var(--duration-fast) var(--ease-out),
+              box-shadow var(--duration-fast);
+}
+
+.app-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.app-btn:active {
+  transform: translateY(0);
+}
+
+.app-btn__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
+}
+
+.app-btn__text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  text-align: left;
+}
+
+.app-btn__label {
+  font-size: 10px;
+  opacity: 0.8;
+}
+
+.app-btn__store {
+  font-size: 15px;
+  font-weight: 600;
+}
+
+/* --------------------------------------------------------------------------
+   Story Section (Option A: Pull Quote Style)
+   -------------------------------------------------------------------------- */
+.story {
+  padding: var(--space-16) 0;
+}
+
+.story__content {
+  max-width: var(--max-width-narrow);
+}
+
+/* Pull quote - the emphasis line shown first */
+.story__pullquote {
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 700;
+  line-height: 1.3;
+  color: var(--color-text);
+  margin-bottom: var(--space-10);
+  max-width: 720px;
+}
+
+.story__body {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-5);
+}
+
+.story__paragraph {
+  font-size: clamp(17px, 2.5vw, 19px);
+  line-height: 1.7;
+  color: var(--color-text-secondary);
+  margin: 0;
+}
+
+/* Fade-in animation */
+.story__pullquote,
+.story__paragraph {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out);
+}
+
+.story__pullquote.visible,
+.story__paragraph.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Stagger animation delays */
+.story__pullquote { transition-delay: 0ms; }
+.story__paragraph:nth-child(1) { transition-delay: 100ms; }
+.story__paragraph:nth-child(2) { transition-delay: 200ms; }
+
+/* --------------------------------------------------------------------------
+   Features Section
+   -------------------------------------------------------------------------- */
+.features {
+  padding: var(--space-16) 0;
+  background: var(--color-bg-subtle);
+}
+
+.features__header {
+  text-align: center;
+  margin-bottom: var(--space-12);
+}
+
+.features__title {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+}
+
+.features__grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-5);
+}
+
+.feature {
+  background: var(--color-bg);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+  transition: transform var(--duration-base) var(--ease-out),
+              box-shadow var(--duration-base);
+}
+
+.feature:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+
+.feature__icon {
+  width: 44px;
+  height: 44px;
+  color: var(--color-primary);
+  margin-bottom: var(--space-4);
+}
+
+.feature__title {
+  font-size: 17px;
+  font-weight: 600;
+  margin-bottom: var(--space-2);
+  color: var(--color-text);
+}
+
+.feature__description {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--color-text-secondary);
+}
+
+/* Feature fade-in */
+.feature {
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--duration-slow) var(--ease-out),
+              transform var(--duration-slow) var(--ease-out),
+              box-shadow var(--duration-base);
+}
+
+.feature.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.feature:nth-child(1) { transition-delay: 0ms; }
+.feature:nth-child(2) { transition-delay: 50ms; }
+.feature:nth-child(3) { transition-delay: 100ms; }
+.feature:nth-child(4) { transition-delay: 150ms; }
+.feature:nth-child(5) { transition-delay: 200ms; }
+.feature:nth-child(6) { transition-delay: 250ms; }
+
+/* --------------------------------------------------------------------------
+   Company Section
+   -------------------------------------------------------------------------- */
+.company {
+  padding: var(--space-20) 0;
+  text-align: center;
+  background: linear-gradient(180deg, var(--color-bg) 0%, var(--color-bg-subtle) 100%);
+}
+
+.company__inner {
+  max-width: 480px;
+  margin: 0 auto;
+  padding: var(--space-10) var(--space-8);
+  background: var(--color-bg);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-lg);
+  border: 1px solid var(--color-border);
+}
+
+.company__divider {
+  color: var(--color-primary);
+  font-size: 24px;
+  letter-spacing: 8px;
+  margin-bottom: var(--space-6);
+  opacity: 0.6;
+}
+
+.company__label {
+  font-size: 15px;
+  color: var(--color-text-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.company__name {
+  font-size: clamp(22px, 3vw, 28px);
+  font-weight: 700;
+  color: var(--color-text);
+  margin-bottom: var(--space-3);
+}
+
+.company__tagline {
+  font-size: 16px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+}
+
+/* --------------------------------------------------------------------------
+   Footer
+   -------------------------------------------------------------------------- */
+.footer {
+  background: var(--color-text);
+  color: var(--color-bg);
+  padding: var(--space-12) 0;
+}
+
+.footer__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-6);
+  text-align: center;
+}
+
+.footer__logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.footer__logo-icon {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  opacity: 0.9;
+}
+
+.footer__logo-text {
+  font-family: var(--font-brand);
+  font-size: 22px;
+  color: var(--color-bg);
+  opacity: 0.9;
+}
+
+.footer__links {
+  display: flex;
+  gap: var(--space-8);
+  list-style: none;
+}
+
+.footer__links a {
+  font-size: 14px;
+  opacity: 0.7;
+  transition: opacity var(--duration-fast);
+}
+
+.footer__links a:hover {
+  opacity: 1;
+}
+
+.footer__contact {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.footer__contact a {
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.footer__contact a:hover {
+  opacity: 1;
+}
+
+.footer__copyright {
+  font-size: 12px;
+  opacity: 0.4;
+}
+
+/* --------------------------------------------------------------------------
+   Responsive
+   -------------------------------------------------------------------------- */
+@media (max-width: 900px) {
+  .features__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: var(--space-10) 0 var(--space-8);
+  }
+
+  .hero__logo {
+    width: 140px;
+    height: 140px;
+  }
+
+  .hero__brand {
+    margin-bottom: var(--space-6);
+  }
+
+  .hero__tagline {
+    margin-bottom: var(--space-5);
+  }
+
+  .hero__actions {
+    margin-bottom: var(--space-8);
+  }
+
+  .features__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .feature {
+    padding: var(--space-5);
+  }
+
+  .footer__links {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: var(--space-4) var(--space-6);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 var(--space-5);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+  }
+
+  .app-btn {
+    justify-content: center;
+  }
+}
+
+/* --------------------------------------------------------------------------
+   Utility: Screen Reader Only
+   -------------------------------------------------------------------------- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
