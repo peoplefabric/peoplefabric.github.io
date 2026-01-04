@@ -116,11 +116,9 @@ a {
   left: 0;
   right: 0;
   z-index: 100;
-  padding: var(--space-4) 0;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border-bottom: 1px solid transparent;
+  padding: var(--space-3) 0;
+  background: #FFFFFF;
+  border-bottom: 1px solid var(--color-border);
   transform: translateY(-100%);
   opacity: 0;
   transition: transform var(--duration-base) var(--ease-out),
@@ -143,19 +141,21 @@ a {
 .header__logo {
   display: flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
 }
 
 .header__logo-icon {
-  width: 32px;
-  height: 32px;
+  width: 64px;
+  height: 64px;
   object-fit: contain;
 }
 
 .header__logo-text {
   font-family: var(--font-brand);
-  font-size: 24px;
+  font-size: 32px;
   color: var(--color-primary);
+  line-height: 1;
+  padding-top: 8px; /* Optical alignment adjustment */
 }
 
 /* --------------------------------------------------------------------------
@@ -176,7 +176,7 @@ a {
 .hero__brand {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
+  gap: var(--space-4);
   margin-bottom: var(--space-8);
 }
 
@@ -191,6 +191,7 @@ a {
   font-size: clamp(56px, 10vw, 80px);
   color: var(--color-primary);
   line-height: 1;
+  padding-top: 20px; /* Optical alignment adjustment */
 }
 
 .hero__tagline {
@@ -306,7 +307,8 @@ a {
 /* Stagger animation delays */
 .story__pullquote { transition-delay: 0ms; }
 .story__paragraph:nth-child(1) { transition-delay: 100ms; }
-.story__paragraph:nth-child(2) { transition-delay: 200ms; }
+.story__paragraph:nth-child(2) { transition-delay: 150ms; }
+.story__paragraph:nth-child(3) { transition-delay: 200ms; }
 
 /* --------------------------------------------------------------------------
    Features Section
@@ -406,14 +408,6 @@ a {
   border: 1px solid var(--color-border);
 }
 
-.company__divider {
-  color: var(--color-primary);
-  font-size: 24px;
-  letter-spacing: 8px;
-  margin-bottom: var(--space-6);
-  opacity: 0.6;
-}
-
 .company__label {
   font-size: 15px;
   color: var(--color-text-secondary);
@@ -429,8 +423,9 @@ a {
 
 .company__tagline {
   font-size: 16px;
-  color: var(--color-text-muted);
+  color: rgba(255, 56, 92, 0.6);
   line-height: 1.5;
+  font-style: italic;
 }
 
 /* --------------------------------------------------------------------------
@@ -451,23 +446,26 @@ a {
 }
 
 .footer__logo {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: var(--space-2);
+  gap: var(--space-3);
+  background: var(--color-bg);
+  padding: var(--space-3) var(--space-5);
+  border-radius: var(--radius-lg);
 }
 
 .footer__logo-icon {
-  width: 28px;
-  height: 28px;
+  width: 48px;
+  height: 48px;
   object-fit: contain;
-  opacity: 0.9;
 }
 
 .footer__logo-text {
   font-family: var(--font-brand);
-  font-size: 22px;
-  color: var(--color-bg);
-  opacity: 0.9;
+  font-size: 28px;
+  color: var(--color-primary);
+  line-height: 1;
+  padding-top: 6px; /* Optical alignment */
 }
 
 .footer__links {
