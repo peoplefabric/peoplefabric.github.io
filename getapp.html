@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Download Moments - Your People. Your Moments. All in one place.">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="googlebot" content="noindex, nofollow">
+  <meta name="theme-color" content="#FF385C">
+
+  <title>Get the App - Moments</title>
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/png" href="assets/favicon.png">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+
+  <style>
+    .getapp {
+      padding: var(--space-16) 0 var(--space-20);
+      min-height: 60vh;
+      display: flex;
+      align-items: center;
+    }
+
+    .getapp__content {
+      max-width: var(--max-width-narrow);
+      margin: 0 auto;
+    }
+
+    .getapp__title {
+      font-size: clamp(24px, 4vw, 32px);
+      font-weight: 700;
+      line-height: 1.3;
+      color: var(--color-text);
+      margin-bottom: var(--space-5);
+    }
+
+    .getapp__placeholder {
+      font-size: clamp(17px, 2.5vw, 19px);
+      line-height: 1.7;
+      color: var(--color-text-secondary);
+      margin-bottom: var(--space-10);
+    }
+
+    .getapp__learn-more {
+      color: var(--color-primary);
+      font-weight: 600;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .getapp__learn-more:hover {
+      color: var(--color-primary-hover);
+    }
+
+    .getapp__actions {
+      display: flex;
+      gap: var(--space-3);
+      flex-wrap: wrap;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scroll-triggered Header -->
+  <header class="header" id="header">
+    <div class="container header__inner">
+      <a href="/" class="header__logo">
+        <img src="assets/logo.png" alt="" class="header__logo-icon">
+        <span class="header__logo-text">Moments</span>
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <div class="hero__main">
+        <div class="hero__brand">
+          <img src="assets/logo.png" alt="Moments" class="hero__logo">
+          <span class="hero__logo-text">Moments</span>
+        </div>
+
+        <h1 class="hero__tagline">
+          Your People. Your Moments.<br>
+          All in one place.
+        </h1>
+      </div>
+    </div>
+  </section>
+
+  <!-- Get App Section -->
+  <section class="getapp">
+    <div class="container">
+      <div class="getapp__content">
+
+        <h2 class="getapp__title">A Moment is anything worth sharing together.</h2>
+        <p class="getapp__placeholder">
+          A graduation, a family reunion, a weekend road trip, a neighborhood block party, a book club, or even just a pizza night with friends. Big or small, planned or spontaneous — create a Moment and invite the people who matter to capture it together. <a href="/" class="getapp__learn-more">Learn More</a>
+        </p>
+
+        <div class="getapp__actions">
+          <a href="#" class="app-btn" aria-label="Download on the App Store">
+            <svg class="app-btn__icon" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+            </svg>
+            <span class="app-btn__text">
+              <span class="app-btn__label">Download on the</span>
+              <span class="app-btn__store">App Store</span>
+            </span>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div class="footer__logo">
+        <img src="assets/logo.png" alt="" class="footer__logo-icon">
+        <span class="footer__logo-text">Moments</span>
+      </div>
+      <p class="footer__contact">
+        Contact us at <a href="mailto:support@peoplefabric.com">support@peoplefabric.com</a>
+      </p>
+      <p class="footer__copyright">
+        &copy; 2026 People Fabric LLC. All rights reserved.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    const header = document.getElementById('header');
+    const heroSection = document.querySelector('.hero');
+
+    const headerObserver = new IntersectionObserver(
+      ([entry]) => {
+        header.classList.toggle('visible', !entry.isIntersecting);
+      },
+      { threshold: 0, rootMargin: '-100px 0px 0px 0px' }
+    );
+    headerObserver.observe(heroSection);
+  </script>
+
+</body>
+</html>

@@ -255,6 +255,16 @@ a {
   font-weight: 600;
 }
 
+.app-btn--disabled {
+  opacity: 0.4;
+  cursor: default;
+}
+
+.app-btn--disabled:hover {
+  transform: none;
+  box-shadow: none;
+}
+
 /* --------------------------------------------------------------------------
    Story Section (Option A: Pull Quote Style)
    -------------------------------------------------------------------------- */
